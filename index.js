@@ -8,9 +8,15 @@ const Timer = require('./models/Timer');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+const cors = require('cors');
+
+app.use(cors({
+    origin: 'https://email-countdown-client-4khmb25ro-vishwanathc56s-projects.vercel.app',
+    methods: ['GET', 'POST', 'DELETE'],
+    credentials: true
+}));
 
 // Middleware
-app.use(cors());
 app.use(express.json());
 
 // Test route
@@ -117,7 +123,6 @@ app.get('/images/:id.gif', async (req, res) => {
     }
 });
 
-
 app.post('/api/saveTimer', async (req, res) => {
     try {
         const newTimer = new Timer(req.body);
@@ -205,4 +210,3 @@ mongoose.connect(process.env.MONGO_URI, {
 
 
 module.exports = app;
-
