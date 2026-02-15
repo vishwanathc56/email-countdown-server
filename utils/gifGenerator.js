@@ -20,7 +20,6 @@ function generateCountdownGIF(endTime, durationSeconds = 30, options = {}) {
     const canvas = createCanvas(width, height);
     const ctx = canvas.getContext('2d');
 
-
     const stream = encoder.createReadStream();
 
     encoder.start();
@@ -35,15 +34,11 @@ function generateCountdownGIF(endTime, durationSeconds = 30, options = {}) {
         const bgColor = options.bgColor || '#000';
         const fontColor = options.fontColor || '#fff';
         const fontSize = options.fontSize || 24;
-        const fontFamily = options.fontFamily || 'Arial';
+        const fontFamily = 'sans-serif';
 
         // Inside the loop, before drawing text
         ctx.fillStyle = bgColor;
         ctx.fillRect(0, 0, width, height);
-
-
-        // ctx.fillStyle = '#000';
-        // ctx.fillRect(0, 0, width, height);
 
         ctx.font = `bold ${fontSize}px ${fontFamily}`;
         ctx.fillStyle = fontColor;
@@ -52,9 +47,6 @@ function generateCountdownGIF(endTime, durationSeconds = 30, options = {}) {
             40,
             60
         );
-
-
-
         encoder.addFrame(ctx);
     }
 
