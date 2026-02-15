@@ -193,13 +193,11 @@ app.use("/api/timers", timerRoutes);
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
 }); */
-mongoose.connect(process.env.MONGO_URI)
+mongoose.connect(process.env.MONGO_URI, {
+    serverSelectionTimeoutMS: 5000
+})
     .then(() => {
         console.log("✅ MongoDB connected");
-
-        /*   app.listen(PORT, () => {
-              console.log(`Server running on port ${PORT}`);
-          }); */
     })
     .catch((err) => {
         console.error("❌ MongoDB connection error:", err);
