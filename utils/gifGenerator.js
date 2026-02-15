@@ -1,5 +1,11 @@
-const { createCanvas } = require('canvas');
+const { createCanvas, registerFont } = require('canvas');
+const path = require('path');
 const GIFEncoder = require('gifencoder');
+
+registerFont(
+    path.join(__dirname, '../fonts/OpenSans-Regular.ttf'),
+    { family: 'OpenSans' }
+);
 
 function getTimeRemaining(target, now) {
     const total = target - now;
@@ -40,7 +46,7 @@ function generateCountdownGIF(endTime, durationSeconds = 30, options = {}) {
         ctx.fillStyle = bgColor;
         ctx.fillRect(0, 0, width, height);
 
-        ctx.font = `bold ${fontSize}px ${fontFamily}`;
+        ctx.font = `bold ${fontSize}px OpenSans`;
         ctx.fillStyle = fontColor;
         ctx.fillText(
             `Time Left: ${remaining.days}d ${remaining.hours}h ${remaining.minutes}m ${remaining.seconds}s`,
