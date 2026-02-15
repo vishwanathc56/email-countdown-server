@@ -8,7 +8,7 @@ const createTimer = (req, res) => {
 
     // Generate a dummy image URL with a unique ID (to be implemented later)
     const timerId = Date.now();
-    const imageUrl = `http://localhost:5000/images/${timerId}.gif?end=${encodeURIComponent(endDateTime)}`;
+    const imageUrl = `${process.env.BASE_URL}/images/${timerId}.gif?end=${encodeURIComponent(endDateTime)}`;
 
 
     res.status(201).json({
