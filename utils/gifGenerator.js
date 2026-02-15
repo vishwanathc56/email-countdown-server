@@ -1,11 +1,6 @@
 const { createCanvas } = require('canvas');
 const GIFEncoder = require('gifencoder');
 
-registerFont('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', {
-    family: 'DejaVu Sans',
-});
-
-
 function getTimeRemaining(target, now) {
     const total = target - now;
     if (total <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0 };
