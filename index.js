@@ -178,7 +178,7 @@ app.post('/api/login', (req, res) => {
 app.use("/api/timers", timerRoutes);
 
 //mongoose.connect('mongodb://127.0.0.1:27017/emailCountdown', {
-mongoose.connect(process.env.MONGO_URI, {
+/* mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
@@ -192,4 +192,15 @@ mongoose.connect(process.env.MONGO_URI, {
 // Start server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);
-});
+}); */
+mongoose.connect(process.env.MONGO_URI)
+    .then(() => {
+        console.log("✅ MongoDB connected");
+
+        app.listen(PORT, () => {
+            console.log(`Server running on port ${PORT}`);
+        });
+    })
+    .catch((err) => {
+        console.error("❌ MongoDB connection error:", err);
+    });
