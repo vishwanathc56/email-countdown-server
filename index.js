@@ -177,7 +177,8 @@ app.post('/api/login', (req, res) => {
 
 app.use("/api/timers", timerRoutes);
 
-mongoose.connect('mongodb://127.0.0.1:27017/emailCountdown', {
+//mongoose.connect('mongodb://127.0.0.1:27017/emailCountdown', {
+mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
