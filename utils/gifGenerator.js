@@ -1,4 +1,4 @@
-const { createCanvas, registerFont } = require('canvas');
+const { createCanvas } = require('canvas');
 const GIFEncoder = require('gifencoder');
 
 registerFont('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf', {
@@ -40,7 +40,7 @@ function generateCountdownGIF(endTime, durationSeconds = 30, options = {}) {
         const bgColor = options.bgColor || '#000';
         const fontColor = options.fontColor || '#fff';
         const fontSize = options.fontSize || 24;
-        const fontFamily = options.fontFamily || 'DejaVu Sans';
+        const fontFamily = options.fontFamily || 'Arial';
 
         // Inside the loop, before drawing text
         ctx.fillStyle = bgColor;
