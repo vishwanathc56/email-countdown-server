@@ -105,7 +105,7 @@ app.get('/images/:id.gif', async (req, res) => {
         res.setHeader('Pragma', 'no-cache');
         res.setHeader('Expires', '0');
 
-        const gifStream = generateCountdownGIF(
+        /* const gifStream = generateCountdownGIF(
             timer.endDateTime,
             30,
             {
@@ -113,6 +113,16 @@ app.get('/images/:id.gif', async (req, res) => {
                 fontColor: timer.fontColor,
                 fontSize: timer.fontSize,
                 fontFamily: timer.fontFamily,
+                width: timer.width,
+                height: timer.height
+            }
+        ); */
+        const gifStream = generateCountdownGIF(
+            timer.endDateTime,
+            {
+                bgColor: timer.bgColor,
+                fontColor: timer.fontColor,
+                fontSize: timer.fontSize,
                 width: timer.width,
                 height: timer.height
             }
