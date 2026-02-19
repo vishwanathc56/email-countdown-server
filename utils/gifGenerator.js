@@ -19,7 +19,8 @@ function getTimeRemaining(target, now) {
     return { days, hours, minutes, seconds };
 }
 
-function generateCountdownGIF(endTime, durationSeconds = 30, options = {}) {
+//function generateCountdownGIF(endTime, durationSeconds = 30, options = {}) {
+function generateCountdownGIF(endTime, options = {}) {
     const width = options.width || 400;
     const height = options.height || 100;
     const encoder = new GIFEncoder(width, height);
@@ -33,7 +34,7 @@ function generateCountdownGIF(endTime, durationSeconds = 30, options = {}) {
     encoder.setDelay(1000); // 1 frame per second
     encoder.setQuality(10);
 
-    for (let i = 0; i < durationSeconds; i++) {
+    /* for (let i = 0; i < durationSeconds; i++) {
         const now = Date.now() + i * 1000;
         const remaining = getTimeRemaining(endTime.getTime(), now);
 
@@ -54,7 +55,24 @@ function generateCountdownGIF(endTime, durationSeconds = 30, options = {}) {
             60
         );
         encoder.addFrame(ctx);
-    }
+    } */
+    const now = Date.now();
+    const remaining = getTimeRemaining(endTime.getTime(), now);
+
+    ctx.fillStyle = options.bgColor || '#000';
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.font = `bold ${options.fontSize || 24}px OpenSans`;
+    ctx.fillStyle = options.fontColor || '#fff';
+
+    ctx.fillText(
+        `Time Left: ${remaining.days}d ${remaining.hours}h ${remaining.minutes}m ${remaining.seconds}s`,
+        40,
+        60
+    );
+
+    encoder.addFrame(ctx);
+    encoder.finish();
 
     encoder.finish();
     return stream;
