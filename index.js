@@ -16,6 +16,7 @@ const cors = require('cors');
 })); */
 app.use(cors({
     origin: [
+        "https://email-countdown-client.vercel.app",
         "https://email-countdown-client-4khmb25ro-vishwanathc56s-projects.vercel.app",
         "https://email-countdown-client-6e2w6aadi-vishwanathc56s-projects.vercel.app"
     ],
